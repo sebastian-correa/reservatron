@@ -1,0 +1,58 @@
+# If you make changes to this file, you should run `poetry run pre-commit install` to update the hooks
+# Remember to update the version of the ruff-pre-commit repo when you update Ruff
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.5
+    hooks:
+      - id: ruff
+        args: [--fix]
+        stages: [commit, pre-rebase]
+      - id: ruff-format
+        stages: [commit, pre-rebase]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=5120"]
+        stages: [commit, pre-rebase]
+      - id: check-ast
+        stages: [commit, pre-rebase]
+      - id: check-case-conflict
+        stages: [commit, pre-rebase]
+      - id: check-docstring-first
+        stages: [commit, pre-rebase]
+      - id: check-merge-conflict
+        stages: [commit, pre-rebase]
+      - id: check-symlinks
+        stages: [commit, pre-rebase]
+      - id: check-vcs-permalinks
+        stages: [commit, pre-rebase]
+      - id: debug-statements
+        stages: [commit, pre-rebase]
+      - id: detect-aws-credentials
+        stages: [commit, pre-rebase]
+        args: [--allow-missing-credentials]
+      - id: detect-private-key
+        stages: [commit, pre-rebase]
+      - id: check-toml
+        stages: [commit, pre-rebase]
+        types: [toml]
+      - id: check-yaml
+        stages: [commit, pre-rebase]
+        types: [yaml]
+      - id: no-commit-to-branch
+        stages: [commit, pre-rebase]
+      - id: trailing-whitespace
+        stages: [commit, pre-rebase]
+        types: [text]
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        stages: [commit, pre-rebase]
+  - repo: https://github.com/frnmst/md-toc
+    rev: "9.0.0"
+    hooks:
+      - id: md-toc
+        stages: [commit, pre-rebase]
+        args: ["--in-place", "-s", "6", "github", "--header-levels", "6"]
