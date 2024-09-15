@@ -1,0 +1,11 @@
+# Documentation: https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  - package-ecosystem: "pip" # Supports dependencies in pyproject.toml https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#pip-and-pip-compile
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5 # Set to 0 to prevent dependabot from running.
+    labels:
+      - "dependencies"

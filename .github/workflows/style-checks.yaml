@@ -1,0 +1,36 @@
+name: Check code style
+
+on: push
+
+jobs:
+  style-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+
+      - name: Setup uv
+        uses: yezz123/setup-uv@v4
+
+      - name: Load cached venv if it exists
+        id: venv-cache
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/uv.lock', '**/pyproject.toml') }}
+
+      - name: Install dependencies
+        if: steps.venv-cache.outputs.cache-hit != 'true'
+        run: uv sync
+
+      - name: Check linting with Ruff
+        run: uv run ruff check
+
+      - name: Check format with Ruff
+        run: uv run ruff format --check
+
+      - name: Check docstring coverage
+        run: uv run docstr-coverage **/*.py --fail-under 100  --verbose=2
