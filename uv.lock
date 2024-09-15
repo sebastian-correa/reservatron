@@ -299,6 +299,9 @@ wheels = [
 name = "reservatron"
 version = "0.1.0"
 source = { editable = "." }
+dependencies = [
+    { name = "requests" },
+]
 
 [package.dev-dependencies]
 dev = [
@@ -311,6 +314,7 @@ dev = [
 ]
 
 [package.metadata]
+requires-dist = [{ name = "requests", specifier = ">=2.32.3" }]
 
 [package.metadata.requires-dev]
 dev = [

@@ -7,7 +7,9 @@ requires-python = ">=3.12"
 authors = [
     { name = "Sebastian Correa", "email" = "43179146+sebastian-correa@users.noreply.github.com" },
 ]
-dependencies = []
+dependencies = [
+    "requests>=2.32.3",
+]
 
 [project.scripts]
 reservatron = "reservatron.cli:main"
