@@ -7,9 +7,7 @@ requires-python = ">=3.12"
 authors = [
     { name = "Sebastian Correa", "email" = "43179146+sebastian-correa@users.noreply.github.com" },
 ]
-dependencies = [
-    "requests>=2.32.3",
-]
+dependencies = ["fake-useragent>=1.5.1", "pydantic>=2.9.2", "requests>=2.32.3"]
 
 [project.scripts]
 reservatron = "reservatron.cli:main"
@@ -22,6 +20,7 @@ dev-dependencies = [
     "pytest>=8.3.3",
     "pytest-cov>=5.0.0",
     "ruff>=0.6.5",
+    "ipython>=8.27.0",
 ]
 
 
@@ -68,6 +67,7 @@ extend-ignore = [
     "D106",   # Missing docstring in public nested class
     "D107",   # We document `__init__` in the class itself.
     "COM812", # Conflict with formatting: missing trailing comma.
+    "FIX",    # Fixme comments are allowed.
 ]
 
 
